@@ -68,14 +68,11 @@ type RoomStateResponse struct {
 	WinnerID   string `json:"winnerId"`
 	WinnerName string `json:"winnerName"`
 	RemainingSeconds int `json:"remainingSeconds"`
-	GameStartedAt time.Time
-	
-	GameEndsAt time.Time
+	GameStartedAt  time.Time `json:"gameStartedAt"`
+	GameEndsAt     time.Time `json:"gameEndsAt"`
 
-	BallReceivedAt time.Time
-
-	BallExpiresAt time.Time
-
+	BallReceivedAt time.Time `json:"ballReceivedAt"`
+	BallExpiresAt  time.Time `json:"ballExpiresAt"`
 
 
 }
