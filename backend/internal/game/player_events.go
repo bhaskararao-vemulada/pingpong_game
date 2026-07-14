@@ -38,6 +38,20 @@ func (e *Engine) handlePlayerJoined(event events.Event) {
 
 		e.room.Start()
 
+	if err := e.room.AssignInitialBallOwner(); err != nil {
+		log.Println("Failed to assign initial ball owner:", err)
+		return
+	}
+
+	log.Printf(
+		"🏓 Initial ball owner assigned: %s",
+		e.room.Ball.CurrentOwnerID,
+	)
+
+	e.bus.Publish(events.Event{
+		Type: events.EventRoomUpdated,
+	})
+}
+
 		// We'll publish GAME_STARTED in the next step.
 	}
-}

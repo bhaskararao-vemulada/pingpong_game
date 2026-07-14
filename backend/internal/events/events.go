@@ -12,6 +12,8 @@ const (
 	EventGameStarted   EventType = "GAME_STARTED"
 	EventGameFinished  EventType = "GAME_FINISHED"
 	EventRoomUpdated   EventType = "ROOM_UPDATED"
+	
+	EventGameConfigured EventType = "GAME_CONFIGURED"
 )
 
 type Event struct {
@@ -20,4 +22,5 @@ type Event struct {
 	PlayerName     string
 	TargetPlayerID string
 	TimeStamp      time.Time
+	GameDurationSeconds int `json:"gameDurationSeconds,omitempty"`
 }

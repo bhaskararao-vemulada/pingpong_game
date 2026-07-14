@@ -29,3 +29,9 @@ func NewBall() *Ball {
 		PassCount:       0,
 	}
 }
+func (b *Ball) PassTo(targetPlayerID string) {
+	b.PreviousOwnerID = b.CurrentOwnerID
+	b.CurrentOwnerID = targetPlayerID
+	b.ReceivedAt = time.Now()
+	b.PassCount++
+}

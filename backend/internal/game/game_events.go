@@ -4,11 +4,28 @@ import (
 	"math/rand"
 	"time"
 	"pingpong_game/backend/internal/events"
+	"log"
 )
 
 func (e *Engine) handleGameFinished(event events.Event) {
 
+	log.Println("🏁 Handling game finished event")
+
+	err := e.room.FinishGame()
+	if err != nil {
+		log.Println("❌ Failed to finish game:", err)
+		return
+	}
+
+	log.Println("🛑 Game state changed: RUNNING -> FINISHED")
+
+	// Tell Hub/browser about final state.
+	e.bus.Publish(events.Event{
+		Type: events.EventRoomUpdated,
+	})
 }
+
+
 
 func (e *Engine) handleGameStarted() {
 

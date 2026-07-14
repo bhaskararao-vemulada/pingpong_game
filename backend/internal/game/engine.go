@@ -100,6 +100,8 @@ func (e *Engine) handleEvent(event events.Event) {
 
 	case events.EventBallPassed:
 		e.handleBallPassed(event)
+	case events.EventGameConfigured:
+		e.handleGameConfigured(event)
 
 	default:
 		// Unknown event

@@ -6,6 +6,7 @@ import (
 	"pingpong_game/backend/internal/events"
 	"pingpong_game/backend/internal/game"
 	"pingpong_game/backend/internal/websocket"
+	"time"
 	
 	
 )
@@ -25,9 +26,10 @@ func New() *Server {
 	mux := http.NewServeMux()
 
 	room := game.NewRoom(
-		"room-1",
-		4,
-	)
+	"room-1",
+	4,
+	2*time.Minute,
+)
 
 	bus := events.NewBus()
 
